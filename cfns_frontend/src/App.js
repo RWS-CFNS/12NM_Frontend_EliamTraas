@@ -1,11 +1,13 @@
 import './App.css';
+import Home from "./pages/Home.js"
+import axios from "axios";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        eliam
       </header>
+      <Home></Home>
     </div>
   );
 }
