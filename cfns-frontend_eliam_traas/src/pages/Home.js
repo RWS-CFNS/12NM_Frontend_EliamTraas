@@ -5,8 +5,8 @@ import DataDisplay from "../features/DataDisplay.js";
 export default function Home() {
   return (
     <div>
-      <MapComponent /> 
-      {/* <DataDisplay /> */}
+      {/* <MapComponent />  */}
+      <DataDisplay />
     </div>
   );
 }
