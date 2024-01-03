@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Home() {
-  const [specificValue, setSpecificValue] = useState(null);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     fetchData();
@@ -11,8 +11,7 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const result = await axios.get("http://localhost:8090/heatmap/h3data");
-      const specificData = result.data["8a82c9a4230ffff"];
-      setSpecificValue(specificData);
+      setData(result.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -20,7 +19,13 @@ export default function Home() {
 
   return (
     <div>
-      <p>Specifieke waarde: {specificValue}</p>
+      <ul>
+        {Object.keys(data).map((key) => (
+          <li key={key}>
+            <strong>{key}:</strong> {data[key]}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
