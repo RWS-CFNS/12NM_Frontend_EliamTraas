@@ -1,10 +1,10 @@
-import "./App.css";
-import Home from "./pages/Home.js"
+import React from "react";
+import Home from "./pages/Home.js";
 
 function App() {
   return (
     <div>
-      <Home></Home>
+      <Home />
     </div>
   );
 }
