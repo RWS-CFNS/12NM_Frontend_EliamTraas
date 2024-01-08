@@ -6,7 +6,7 @@ import DataDisplay from "../features/DataDisplay"; // Update the path based on y
 const Home = () => {
   return (
     <div>
-      <MapComponent />
+      <MapComponent /> 
       {/* <DataDisplay /> */}
     </div>
   );
