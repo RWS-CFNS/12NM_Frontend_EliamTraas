@@ -14,8 +14,8 @@ export const createMap = () => {
 
   const view = new MapView({
     map: map,
-    center: [-118.805, 34.027],
-    zoom: 13,
+    center: [5.0705555, 52.557611],
+    zoom: 8,
     container: "viewDiv",
     constraints: {
       snapToZoom: false
