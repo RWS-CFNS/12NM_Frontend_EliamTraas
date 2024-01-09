@@ -4,7 +4,7 @@ import Map from '@arcgis/core/Map';
 import esriConfig from '@arcgis/core/config';
 
 export const createMap = () => {
-  const apiKey = "your api key"; // Jouw API-sleutel hier
+  const apiKey = "AAPKe0e926b6b4e7413aaea425b81eb287c6Dx0BBJiXRPfoDCI2KvvtE3gEkY_O2SdTbwnQhviMjZgrSBIpHajYcYrQKKjLVnN3"; // Jouw API-sleutel hier
 
   esriConfig.apiKey = apiKey;
 

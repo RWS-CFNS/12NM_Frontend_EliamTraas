@@ -1,18 +1,22 @@
 // MapComponent.js
 import React, { useEffect } from 'react';
 import { createMap } from '../utility/MapCreating';
+import config from '../utility/config'; // Importeer de configuratie
 
 const MapComponent = () => {
   useEffect(() => {
-    const apiKey = process.env.REACT_APP_ARCGIS_API_KEY; // Get API key from environment variables
+    const apiKey = config.ARC_GIS_API_KEY; // Gebruik de API-sleutel vanuit de configuratie
     const view = createMap(apiKey);
 
     return () => {
-      // Perform any cleanup (e.g., view.destroy()) if necessary
+      if (view) {
+        view.container = null;
+        view.destroy();
+      }
     };
   }, []);
 
-  return <div id="viewDiv" style={{ width: '100%', height: '500px' }}></div>;
+  return <div id="viewDiv" style={{ width: '100%', height: '900px' }}></div>;
 };
 
 export default MapComponent;
