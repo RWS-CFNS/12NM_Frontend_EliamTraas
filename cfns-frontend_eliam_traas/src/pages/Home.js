@@ -1,12 +1,13 @@
 // Home.js
 import React from "react";
-import MapComponent from "../features/MapComponent"; // Update the path based on your folder structure
-import DataDisplay from "../features/DataDisplay"; // Update the path based on your folder structure
+import MapComponent from "../features/MapComponent";
+import Sidebar from "../features/Sidebar";
 
 const Home = () => {
   return (
-    <div>
-      <MapComponent /> 
+    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      <MapComponent />
+      <Sidebar />
     </div>
   );
 };
