@@ -44,6 +44,8 @@ const SidebarWrap = styled.div`
 `;
 
 const SidebarButton = styled.button`
+  width: 100px;
+  height: 40px;
   margin-bottom: 20px;
   padding: 10px 20px;
   font-size: 16px;
@@ -57,7 +59,7 @@ const SidebarButton = styled.button`
 const CFNSTitle = styled.h1`
   text-align: center;
   color: blue;
-  margin-left: 20px;
+  margin-left: 200px;
 `;
 
 const CloseButton = styled.div`
@@ -87,9 +89,9 @@ const Sidebar = () => {
           </CloseButton>
           <SidebarWrap>
             <SidebarButton>Vodafone</SidebarButton>
-            <SidebarButton>Button 2</SidebarButton>
-            <SidebarButton>Button 3</SidebarButton>
-            <SidebarButton>Button 4</SidebarButton>
+            <SidebarButton>KPN</SidebarButton>
+            <SidebarButton>Odido</SidebarButton>
+            <SidebarButton>Tampnet</SidebarButton>
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
