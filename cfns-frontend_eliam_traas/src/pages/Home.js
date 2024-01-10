@@ -1,13 +1,13 @@
 // Home.js
 import React from "react";
 import MapComponent from "../features/MapComponent";
-import Sidebar from "../features/Sidebar";
+import CustomSidebar from "../features/Sidebar"; // Import your Sidebar component
 
 const Home = () => {
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+    <div id="mapContainer">
       <MapComponent />
-      <Sidebar />
+      <CustomSidebar />
     </div>
   );
 };

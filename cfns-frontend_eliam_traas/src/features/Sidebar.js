@@ -1,33 +1,27 @@
 // Sidebar.js
-import React, { useState } from 'react';
-import { Menu, MenuItem, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
-import { Home as HomeIcon } from '@mui/icons-material';
-import './Sidebar.css';
+import React from 'react';
+import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const handleToggleSidebar = () => {
-    setCollapsed(!collapsed);
-  };
-
+const CustomSidebar = () => {
   return (
-    <div className={`custom-sidebar ${collapsed ? 'collapsed' : ''}`}>
-      <SidebarHeader>
-        {/* Header content */}
-      </SidebarHeader>
-      <Menu iconShape="circle">
-        <MenuItem icon={<HomeIcon />}>Home</MenuItem>
-        {/* Add more menu items as needed */}
+    <Sidebar>
+      <Menu
+        menuItemStyles={{
+          button: {
+            [`&.active`]: {
+              backgroundColor: '#13395e',
+              color: '#b6c8d9',
+            },
+          },
+        }}
+      >
+        <MenuItem><Link to="/documentation">Documentation</Link></MenuItem>
+        <MenuItem><Link to="/calendar">Calendar</Link></MenuItem>
+        <MenuItem><Link to="/e-commerce">E-commerce</Link></MenuItem>
       </Menu>
-      <SidebarFooter>
-        {/* Footer content */}
-      </SidebarFooter>
-      <button onClick={handleToggleSidebar} className="toggle-button">
-        Toggle Sidebar
-      </button>
-    </div>
+    </Sidebar>
   );
 };
 
-export default Sidebar;
+export default CustomSidebar;
