@@ -1,12 +1,13 @@
+// App.js
+
 import React from "react";
-import Home from "./pages/Home.js";
-import DataDisplay from "./features/DataDisplay.js";
+import "./App.css";
+import Home from "./pages/Home.js"; // Import the Home component
 
 function App() {
   return (
     <div>
-      <Home />
-      {/* <DataDisplay /> */}
+      <Home /> {/* Render the Home component */}
     </div>
   );
 }
