@@ -5,8 +5,8 @@ import DataDisplay from "./features/DataDisplay.js";
 function App() {
   return (
     <div>
-      {/* <Home /> */}
-      <DataDisplay />
+      <Home />
+      {/* <DataDisplay /> */}
     </div>
   );
 }

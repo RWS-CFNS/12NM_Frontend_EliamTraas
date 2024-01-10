@@ -16,7 +16,7 @@ const MapComponent = () => {
     };
   }, []);
 
-  return <div id="viewDiv" style={{ width: '100%', height: '900px' }}></div>;
+  return <div id="viewDiv" style={{ width: '100%', height: '920px' }}></div>;
 };
 
 export default MapComponent;
