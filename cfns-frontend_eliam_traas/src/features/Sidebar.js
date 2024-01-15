@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
+import checkmarkImage from "../utility/checkmark.png";
 
 const Nav = styled.div`
   background: #15171c;
@@ -43,7 +44,7 @@ const SidebarWrap = styled.div`
   margin-top: 50px;
 `;
 
-const SidebarButton = styled.button`
+const ProviderButton = styled.button`
   width: 100px;
   height: 40px;
   margin-bottom: 20px;
@@ -54,6 +55,24 @@ const SidebarButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+`;
+
+const CheckButton = styled.button`
+  width: 20px;
+  height: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+  background-color: #15171c;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const CheckImage = styled.img`
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
 `;
 
 const CFNSTitle = styled.h1`
@@ -69,8 +88,13 @@ const CloseButton = styled.div`
 
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <>
@@ -88,10 +112,13 @@ const Sidebar = () => {
             </NavIcon>
           </CloseButton>
           <SidebarWrap>
-            <SidebarButton>Vodafone</SidebarButton>
-            <SidebarButton>KPN</SidebarButton>
-            <SidebarButton>Odido</SidebarButton>
-            <SidebarButton>Tampnet</SidebarButton>
+            <ProviderButton>Vodafone</ProviderButton>
+            <ProviderButton>KPN</ProviderButton>
+            <ProviderButton>Odido</ProviderButton>
+            <ProviderButton>Tampnet</ProviderButton>
+            <CheckButton onClick={handleCheckboxChange}>
+              <CheckImage src={checkmarkImage} alt="Checkmark" />
+            </CheckButton>
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
