@@ -18,17 +18,17 @@ const Nav = styled.div`
 // Gebruikt om de zijbalk te openen
 const NavIcon = styled(Link)`
   margin-left: 20px; // Linkermarge
-  font-size: 30px; // Tekengrootte
-  height: 80px; // Hoogte van het pictogramgebied
+  font-size: 30px; // Tekstgrootte
+  height: 80px; // Hoogte van de pictogram
   display: flex; // Flexbox layout
   align-items: center; // Gecentreerde uitlijning van items
-  color: white; // Tekleur
+  color: white; // Pictogramkleur
 `;
 
 // Blauwe CFNS-titel op Nav
 const CFNSTitle = styled.h1`
   text-align: center; // Gecentreerde uitlijning van tekst
-  color: white; // Tekleur
+  color: white; // Tekstkleur
   margin-left: 250px; // Linkermarge
 `;
 
@@ -49,6 +49,7 @@ const SidebarNav = styled.nav`
 const CloseButton = styled.div`
   display: flex; // Flexbox layout
   justify-content: flex-end; // Uitlijning naar rechts
+  margin-right: 10px; // Ondermarge
 `;
 
 // Styled components voor de ProviderButtons
@@ -66,7 +67,7 @@ const ProviderButton = styled.button`
   height: 40px; // Hoogte van de knop
   margin-bottom: 20px; // Ondermarge
   font-size: 16px; // Tekengrootte
-  background-color: blue; // Achtergrondkleur van de knop
+  background-color: ${({ isActive }) => (isActive ? 'darkblue' : 'blue')}; // Achtergrondkleur van de knop
   color: white; // Tekleur
   border: none; // Geen rand
   border-radius: 5px; // Afronding van de hoeken
@@ -77,6 +78,7 @@ const ProviderButton = styled.button`
 const CheckboxSliderContainer = styled.div`
   display: flex; // Flexbox layout
   align-items: center; // Gecentreerde uitlijning van items
+  margin-bottom: 20px;
 `;
 
 const CheckButton = styled.button`
@@ -123,57 +125,105 @@ const SliderLabel = styled.div`
 // Main Sidebar component
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-  const [sliderValue, setSliderValue] = useState(50);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [sliderValue1, setSliderValue1] = useState(50);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [sliderValue2, setSliderValue2] = useState(50);
+  const [activeProvider, setActiveProvider] = useState(null);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const handleCheckboxChange1 = () => {
+    setIsChecked1(!isChecked1);
   };
 
-  const handleSliderChange = (event) => {
-    setSliderValue(event.target.value);
+  const handleSliderChange1 = (event) => {
+    setSliderValue1(event.target.value);
+  };
+
+  const handleCheckboxChange2 = () => {
+    setIsChecked2(!isChecked2);
+  };
+
+  const handleSliderChange2 = (event) => {
+    setSliderValue2(event.target.value);
+  };
+
+  const handleProviderClick = (provider) => {
+    setActiveProvider(provider);
   };
 
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        {/* Navbar */}
         <Nav>
           <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <CFNSTitle>CFNS</CFNSTitle>
         </Nav>
-        {/* Sidebar */}
         <SidebarNav sidebar={sidebar}>
           <CloseButton>
             <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
           </CloseButton>
-          {/* ProviderButtons Container */}
           <ProviderButtonsContainer>
-            <ProviderButton>Vodafone</ProviderButton>
-            <ProviderButton>KPN</ProviderButton>
-            <ProviderButton>Odido</ProviderButton>
-            <ProviderButton>Tampnet</ProviderButton>
+            <ProviderButton
+              isActive={activeProvider === 'Vodafone'}
+              onClick={() => handleProviderClick('Vodafone')}
+            >
+              Vodafone
+            </ProviderButton>
+            <ProviderButton
+              isActive={activeProvider === 'KPN'}
+              onClick={() => handleProviderClick('KPN')}
+            >
+              KPN
+            </ProviderButton>
+            <ProviderButton
+              isActive={activeProvider === 'Odido'}
+              onClick={() => handleProviderClick('Odido')}
+            >
+              Odido
+            </ProviderButton>
+            <ProviderButton
+              isActive={activeProvider === 'Tampnet'}
+              onClick={() => handleProviderClick('Tampnet')}
+            >
+              Tampnet
+            </ProviderButton>
           </ProviderButtonsContainer>
-          {/* Checkbox and Slider Container */}
+          {/* Eerste CheckboxSliderContainer */}
           <CheckboxSliderContainer>
-            <CheckButton onClick={handleCheckboxChange}>
-              {isChecked && <CheckImage src={checkmarkImage} alt="Checkmark" />}
+            <CheckButton onClick={handleCheckboxChange1}>
+              {isChecked1 && <CheckImage src={checkmarkImage} alt="Checkmark" />}
             </CheckButton>
             <SliderContainer>
               <Slider
                 type="range"
                 min="0"
                 max="300"
-                value={sliderValue}
-                onChange={handleSliderChange}
+                value={sliderValue1}
+                onChange={handleSliderChange1}
               />
-              <SliderLabel>Golfhoogte: {sliderValue} cm</SliderLabel>
+              <SliderLabel>Golfhoogte: {sliderValue1} cm</SliderLabel>
+            </SliderContainer>
+          </CheckboxSliderContainer>
+          {/* Tweede CheckboxSliderContainer */}
+          <CheckboxSliderContainer>
+            <CheckButton onClick={handleCheckboxChange2}>
+              {isChecked2 && <CheckImage src={checkmarkImage} alt="Checkmark" />}
+            </CheckButton>
+            <SliderContainer>
+              <Slider
+                type="range"
+                min="0"
+                max="300"
+                value={sliderValue2}
+                onChange={handleSliderChange2}
+              />
+              <SliderLabel>Golfhoogte: {sliderValue2} cm</SliderLabel>
             </SliderContainer>
           </CheckboxSliderContainer>
         </SidebarNav>
