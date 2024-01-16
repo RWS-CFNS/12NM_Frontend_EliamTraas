@@ -6,130 +6,118 @@ import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import checkmarkImage from "../utility/checkmark.png";
 
-// Styled components for the Navbar
-// Black bar on top of page
+// Styled components voor de Navbar
+// Zwarte balk bovenaan de pagina
 const Nav = styled.div`
-  background: #333333;
-  height: 60px;
-  display: flex;
-  align-items: center;
+  background: #333333; // Achtergrondkleur van de balk
+  height: 60px; // Hoogte van de balk
+  display: flex; // Flexbox layout
+  align-items: center; // Gecentreerde uitlijning van items
 `;
 
-// Used to open the sidebar
+// Gebruikt om de zijbalk te openen
 const NavIcon = styled(Link)`
-  margin-left: 20px;
-  font-size: 30px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  color: white;
+  margin-left: 20px; // Linkermarge
+  font-size: 30px; // Tekengrootte
+  height: 80px; // Hoogte van het pictogramgebied
+  display: flex; // Flexbox layout
+  align-items: center; // Gecentreerde uitlijning van items
+  color: white; // Tekleur
 `;
 
-// Blue CFNS title on Nav
+// Blauwe CFNS-titel op Nav
 const CFNSTitle = styled.h1`
-  text-align: center;
-  color: white;
-  margin-left: 250px;
-`;
-// Styled components for the Sidebar
-const SidebarNav = styled.nav`
-  background: #333333;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;// Zorgt ervoor dat de sidebar over de navbar schuift
-  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};// Zorgt voor het uitschuiven van de sidebar
-  transition: 300ms;
-  z-index: 10;// Zorgt ervoor dat het op de eerste laag van de pagina staat 
+  text-align: center; // Gecentreerde uitlijning van tekst
+  color: white; // Tekleur
+  margin-left: 250px; // Linkermarge
 `;
 
+// Styled components voor de Sidebar
+const SidebarNav = styled.nav`
+  background: #333333; // Achtergrondkleur van de zijbalk
+  width: 250px; // Breedte van de zijbalk
+  height: 100vh; // Volledige hoogte van het scherm
+  display: flex; // Flexbox layout
+  flex-direction: column; // Stapel kolommen boven op elkaar
+  position: fixed; // Vaste positie op het scherm
+  top: 0; // Afstand vanaf de bovenkant van het scherm
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")}; // Positie van de zijbalk (ingeschoven of uitgeschoven)
+  transition: 300ms; // Overgangseffect
+  z-index: 10; // Z-index voor stapeling van elementen
+`;
 
 const CloseButton = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  display: flex; // Flexbox layout
+  justify-content: flex-end; // Uitlijning naar rechts
 `;
 
-// Styled components for the ProviderButtons
+// Styled components voor de ProviderButtons
 const ProviderButtonsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  justify-items: center;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  display: grid; // Grid layout
+  grid-template-columns: repeat(2, 1fr); // Grid kolommen (2 kolommen)
+  grid-gap: 10px; // Ruimte tussen de kolommen
+  justify-items: center; // Gecentreerde uitlijning van items
+  margin-top: 40px; // Bovenmarge
+  margin-bottom: 50px; // Ondermarge
 `;
 
 const ProviderButton = styled.button`
-  width: 100px;
-  height: 40px;
-  font-size: 16px;
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 100px; // Breedte van de knop
+  height: 40px; // Hoogte van de knop
+  margin-bottom: 20px; // Ondermarge
+  font-size: 16px; // Tekengrootte
+  background-color: blue; // Achtergrondkleur van de knop
+  color: white; // Tekleur
+  border: none; // Geen rand
+  border-radius: 5px; // Afronding van de hoeken
+  cursor: pointer; // Wijziging van de cursor bij hover
 `;
 
-// Styled components for the Checkbox and Slider
+// Styled components voor de Checkbox en Slider
 const CheckboxSliderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+  display: flex; // Flexbox layout
+  align-items: center; // Gecentreerde uitlijning van items
 `;
 
 const CheckButton = styled.button`
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  margin-right: 10px;
-  background-color: #333333;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 20px; // Breedte van de knop
+  height: 20px; // Hoogte van de knop
+  margin-right: 20px; // Rechtermarge
+  margin-left: 20px; // Linkermarge
+  background-color: #333333; // Achtergrondkleur van de knop
+  color: white; // Tekstkleur
+  border: 1px solid white; // Randstijl
+  border-radius: 5px; // Afronding van de hoeken
+  cursor: pointer; // Wijziging van de cursor bij hover
 `;
 
 const CheckImage = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 15px; // Breedte van de afbeelding
+  height: 15px; // Hoogte van de afbeelding
+  margin-left: -5px; // Linkermarge (negatief om naar links te verplaatsen)
 `;
 
 const SliderContainer = styled.div`
-  width: 100px; /* Adjust as needed */
+  width: 180px; // Breedte van de container
 `;
 
 const Slider = styled.input`
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 5px;
-  background: #333333;
-  border: 1px solid white;
-  border-radius: 5px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  width: 100%; // Volledige breedte van de container
+  height: 100%; // Volledige hoogte van de container
+  transition: opacity 0.2s; // Overgangseffect voor de slider
 
   &:hover {
-    opacity: 1;
+    opacity: 1; // Ondoorzichtigheid bij hover
   }
 
   &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
-    border-radius: 50%;
-    cursor: pointer;
+    cursor: pointer; // Wijziging van de cursor bij hover
   }
 `;
 
 const SliderLabel = styled.div`
-  color: white;
-  text-align: center;
-  margin-top: 5px;
+  color: white; // Tekstkleur
+  text-align: center; // Gecentreerde uitlijning van tekst
 `;
 
 // Main Sidebar component
@@ -185,7 +173,7 @@ const Sidebar = () => {
                 value={sliderValue}
                 onChange={handleSliderChange}
               />
-              <SliderLabel>Golfhoogte: {sliderValue}</SliderLabel>
+              <SliderLabel>Golfhoogte: {sliderValue} cm</SliderLabel>
             </SliderContainer>
           </CheckboxSliderContainer>
         </SidebarNav>
