@@ -60,8 +60,8 @@ const ProviderButton = styled.button`
 const CheckButton = styled.button`
   width: 20px;
   height: 20px;
-  margin-bottom: 20px;
-  margin-right: 60px;
+  padding: 0;
+  margin-right: 10px;
   background-color: #15171c;
   color: white;
   border: 1px solid white;
@@ -70,9 +70,8 @@ const CheckButton = styled.button`
 `;
 
 const CheckImage = styled.img`
-  width: 10px;
-  height: 10px;
-  margin-left: -5px;
+  width: 100%;
+  height: 100%;
 `;
 
 const CFNSTitle = styled.h1`
@@ -117,7 +116,7 @@ const Sidebar = () => {
             <ProviderButton>Odido</ProviderButton>
             <ProviderButton>Tampnet</ProviderButton>
             <CheckButton onClick={handleCheckboxChange}>
-              <CheckImage src={checkmarkImage} alt="Checkmark" />
+              {isChecked && <CheckImage src={checkmarkImage} alt="Checkmark" />}
             </CheckButton>
           </SidebarWrap>
         </SidebarNav>
