@@ -1,4 +1,3 @@
-// MapComponent.js
 import React, { useEffect } from 'react';
 import { createMap } from '../utility/MapCreating';
 import config from '../utility/config'; // Importeer de configuratie
