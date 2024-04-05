@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.div`
-  background: #333333;
+  background: #000050;  
   height: 60px;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const CFNSTitle = styled.h1`
 `;
 
 export const SidebarNav = styled.nav`
-  background: #333333;
+  background: #000060;
   width: 250px;
   height: 100vh;
   display: flex;

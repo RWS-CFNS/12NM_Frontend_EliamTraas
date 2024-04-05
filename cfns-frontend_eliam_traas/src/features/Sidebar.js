@@ -22,32 +22,53 @@ import {
 // Main Sidebar component
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const [activeProviders, setActiveProviders] = useState([]);
   const [isChecked1, setIsChecked1] = useState(false);
   const [sliderValue1, setSliderValue1] = useState(50);
   const [isChecked2, setIsChecked2] = useState(false);
   const [sliderValue2, setSliderValue2] = useState(50);
-  const [activeProvider, setActiveProvider] = useState(null);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => {
+    if (!sidebar) {
+      console.log("Sidebar opened");
+    } else {
+      console.log("Sidebar closed");
+    }
+    setSidebar(!sidebar);
+  };
 
   const handleCheckboxChange1 = () => {
     setIsChecked1(!isChecked1);
+    console.log(`Checkbox 1 is value ${isChecked1 ? 0 : 1}`);
   };
 
   const handleSliderChange1 = (event) => {
-    setSliderValue1(event.target.value);
+    const value = parseInt(event.target.value);
+    setSliderValue1(value);
+    console.log(`Slider 1 value changed to ${value}`);
   };
 
   const handleCheckboxChange2 = () => {
     setIsChecked2(!isChecked2);
+    console.log(`Checkbox 2 is value ${isChecked2 ? 0 : 1}`);
   };
 
   const handleSliderChange2 = (event) => {
-    setSliderValue2(event.target.value);
+    const value = parseInt(event.target.value);
+    setSliderValue2(value);
+    console.log(`Slider 2 value changed to ${value}`);
   };
 
   const handleProviderClick = (provider) => {
-    setActiveProvider(provider);
+    const isActive = activeProviders.includes(provider);
+
+    if (isActive) {
+      setActiveProviders(activeProviders.filter((p) => p !== provider));
+      console.log(`${provider} is value 0`);
+    } else {
+      setActiveProviders([...activeProviders, provider]);
+      console.log(`${provider} is value 1`);
+    }
   };
 
   return (
@@ -67,25 +88,25 @@ const Sidebar = () => {
           </CloseButton>
           <ProviderButtonsContainer>
             <ProviderButton
-              isActive={activeProvider === 'Vodafone'}
+              isActive={activeProviders.includes('Vodafone')}
               onClick={() => handleProviderClick('Vodafone')}
             >
               Vodafone
             </ProviderButton>
             <ProviderButton
-              isActive={activeProvider === 'KPN'}
+              isActive={activeProviders.includes('KPN')}
               onClick={() => handleProviderClick('KPN')}
             >
               KPN
             </ProviderButton>
             <ProviderButton
-              isActive={activeProvider === 'Odido'}
+              isActive={activeProviders.includes('Odido')}
               onClick={() => handleProviderClick('Odido')}
             >
               Odido
             </ProviderButton>
             <ProviderButton
-              isActive={activeProvider === 'Tampnet'}
+              isActive={activeProviders.includes('Tampnet')}
               onClick={() => handleProviderClick('Tampnet')}
             >
               Tampnet
@@ -103,7 +124,7 @@ const Sidebar = () => {
                 value={sliderValue1}
                 onChange={handleSliderChange1}
               />
-              <SliderLabel>Golfhoogte: {sliderValue1} cm</SliderLabel>
+              <SliderLabel>Golfhoogte 1: {sliderValue1} cm</SliderLabel>
             </SliderContainer>
           </CheckboxSliderContainer>
           <CheckboxSliderContainer>
@@ -118,7 +139,7 @@ const Sidebar = () => {
                 value={sliderValue2}
                 onChange={handleSliderChange2}
               />
-              <SliderLabel>Golfhoogte: {sliderValue2} cm</SliderLabel>
+              <SliderLabel>Golfhoogte 2: {sliderValue2} cm</SliderLabel>
             </SliderContainer>
           </CheckboxSliderContainer>
         </SidebarNav>
