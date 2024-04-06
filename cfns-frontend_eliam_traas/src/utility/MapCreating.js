@@ -1,11 +1,10 @@
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import esriConfig from '@arcgis/core/config';
+import config from './config';
 
 export const createMap = () => {
-  const apiKey = "AAPKe0e926b6b4e7413aaea425b81eb287c6Dx0BBJiXRPfoDCI2KvvtE3gEkY_O2SdTbwnQhviMjZgrSBIpHajYcYrQKKjLVnN3";
-
-  esriConfig.apiKey = apiKey;
+  esriConfig.apiKey = config.ARC_GIS_API_KEY;
 
   const map = new Map({
     basemap: "arcgis-topographic"
