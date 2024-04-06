@@ -3,6 +3,7 @@ import { IconContext } from "react-icons/lib";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import checkmarkImage from "../utility/checkmark.png";
+import { Link } from 'react-router-dom';
 import {
   Nav,
   NavIcon,
@@ -78,7 +79,9 @@ const Sidebar = () => {
           <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-          <CFNSTitle>CFNS</CFNSTitle>
+          <CFNSTitle>
+            <Link to="https://cfns.nl/About/" style={{ color: 'white' }}>CFNS</Link>
+          </CFNSTitle>
         </Nav>
         <SidebarNav sidebar={sidebar}>
           <CloseButton>
