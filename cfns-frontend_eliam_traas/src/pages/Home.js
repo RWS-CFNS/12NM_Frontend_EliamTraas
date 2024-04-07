@@ -6,9 +6,9 @@ import DataDisplay from "../features/DataDisplay";
 const Home = () => {
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      <Sidebar /> 
-      <MapComponent />
-      {/* <DataDisplay /> */}
+      {/* <Sidebar />  */}
+      {/* <MapComponent /> */}
+      <DataDisplay />
     </div>
   );
 };

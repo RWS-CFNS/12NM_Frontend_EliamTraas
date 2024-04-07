@@ -38,26 +38,15 @@ const Sidebar = () => {
     setSidebar(!sidebar);
   };
 
-  const handleCheckboxChange1 = () => {
-    setIsChecked1(!isChecked1);
-    console.log(`Checkbox 1 is value ${isChecked1 ? 0 : 1}`);
+  const handleCheckboxChange = (isChecked, setIsChecked, sliderNumber) => {
+    setIsChecked(!isChecked);
+    console.log(`Checkbox ${sliderNumber} is value ${isChecked ? 0 : 1}`);
   };
 
-  const handleSliderChange1 = (event) => {
+  const handleSliderChange = (event, setValue, sliderNumber) => {
     const value = parseInt(event.target.value);
-    setSliderValue1(value);
-    console.log(`Slider 1 value changed to ${value}`);
-  };
-
-  const handleCheckboxChange2 = () => {
-    setIsChecked2(!isChecked2);
-    console.log(`Checkbox 2 is value ${isChecked2 ? 0 : 1}`);
-  };
-
-  const handleSliderChange2 = (event) => {
-    const value = parseInt(event.target.value);
-    setSliderValue2(value);
-    console.log(`Slider 2 value changed to ${value}`);
+    setValue(value);
+    console.log(`Slider ${sliderNumber} value changed to ${value}`);
   };
 
   const handleProviderClick = (provider) => {
@@ -80,7 +69,7 @@ const Sidebar = () => {
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <CFNSTitle>
-            <Link to="https://cfns.nl/About/" style={{ color: 'white' }}>CFNS</Link>
+            <a href="https://cfns.nl/About/" style={{ color: 'white' }}>CFNS</a>
           </CFNSTitle>
         </Nav>
         <SidebarNav sidebar={sidebar}>
@@ -116,7 +105,7 @@ const Sidebar = () => {
             </ProviderButton>
           </ProviderButtonsContainer>
           <CheckboxSliderContainer>
-            <CheckButton onClick={handleCheckboxChange1}>
+            <CheckButton onClick={() => handleCheckboxChange(isChecked1, setIsChecked1, 1)}>
               {isChecked1 && <CheckImage src={checkmarkImage} alt="Checkmark" />}
             </CheckButton>
             <SliderContainer>
@@ -125,13 +114,13 @@ const Sidebar = () => {
                 min="0"
                 max="300"
                 value={sliderValue1}
-                onChange={handleSliderChange1}
+                onChange={(event) => handleSliderChange(event, setSliderValue1, 1)}
               />
               <SliderLabel>Golfhoogte 1: {sliderValue1} cm</SliderLabel>
             </SliderContainer>
           </CheckboxSliderContainer>
           <CheckboxSliderContainer>
-            <CheckButton onClick={handleCheckboxChange2}>
+            <CheckButton onClick={() => handleCheckboxChange(isChecked2, setIsChecked2, 2)}>
               {isChecked2 && <CheckImage src={checkmarkImage} alt="Checkmark" />}
             </CheckButton>
             <SliderContainer>
@@ -140,7 +129,7 @@ const Sidebar = () => {
                 min="0"
                 max="300"
                 value={sliderValue2}
-                onChange={handleSliderChange2}
+                onChange={(event) => handleSliderChange(event, setSliderValue2, 2)}
               />
               <SliderLabel>Golfhoogte 2: {sliderValue2} cm</SliderLabel>
             </SliderContainer>
