@@ -4,11 +4,12 @@ import Sidebar from "../features/Sidebar";
 import DataDisplay from "../features/DataDisplay";
 
 const Home = () => {
+  // Laad de homepagina
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      {/* <Sidebar />  */}
-      {/* <MapComponent /> */}
-      <DataDisplay />
+      <Sidebar /> 
+      <MapComponent />
+      {/* <DataDisplay /> */}
     </div>
   );
 };

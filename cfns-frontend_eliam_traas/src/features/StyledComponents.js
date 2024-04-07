@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Alle styling van de componenten van de applicatie
 export const Nav = styled.div`
   background: #000050;  
   height: 60px;

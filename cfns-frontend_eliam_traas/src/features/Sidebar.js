@@ -20,7 +20,7 @@ import {
   SliderLabel
 } from "./StyledComponents";
 
-// Main Sidebar component
+// Stelt voor alle parameters de status in
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [activeProviders, setActiveProviders] = useState([]);
@@ -29,6 +29,7 @@ const Sidebar = () => {
   const [isChecked2, setIsChecked2] = useState(false);
   const [sliderValue2, setSliderValue2] = useState(50);
 
+  // Opent de sidebar
   const showSidebar = () => {
     if (!sidebar) {
       console.log("Sidebar opened");
@@ -38,17 +39,20 @@ const Sidebar = () => {
     setSidebar(!sidebar);
   };
 
+  // Functie om de checkbox een waarde te geven
   const handleCheckboxChange = (isChecked, setIsChecked, sliderNumber) => {
     setIsChecked(!isChecked);
     console.log(`Checkbox ${sliderNumber} is value ${isChecked ? 0 : 1}`);
   };
 
+  // Functie om de slider een waarde te geven
   const handleSliderChange = (event, setValue, sliderNumber) => {
     const value = parseInt(event.target.value);
     setValue(value);
     console.log(`Slider ${sliderNumber} value changed to ${value}`);
   };
 
+  // Functie om de provider buttons een waarde te geven
   const handleProviderClick = (provider) => {
     const isActive = activeProviders.includes(provider);
 

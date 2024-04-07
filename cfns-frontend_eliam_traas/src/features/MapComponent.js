@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { createMap } from '../utility/MapCreating';
-import config from '../utility/config'; // Importeer de configuratie
+import config from '../utility/config';
 
+// Laad de map component
 const MapComponent = () => {
   useEffect(() => {
-    const apiKey = config.ARC_GIS_API_KEY; // Gebruik de API-sleutel vanuit de configuratie
+    const apiKey = config.ARC_GIS_API_KEY;
     const view = createMap(apiKey);
 
     return () => {
